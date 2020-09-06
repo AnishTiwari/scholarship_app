@@ -1,0 +1,61 @@
+﻿@model IEnumerable<scholarship_app.Models.scholarship_details>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th> <th>
+            @Html.DisplayNameFor(model => model.student_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td> <td>
+                @Html.DisplayFor(modelItem => item.student_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.student.Name)
+            </td>
+            <td>
+
+                @Html.ActionLink("APPROVE", "approve", "Approver", new { id = item.student_id },null)  |  @Html.ActionLink("REJECT", "reject", "Approver", new { id =item.student_id},null)
+
+            </td>
+        </tr>
+    }
+
+</table>
+

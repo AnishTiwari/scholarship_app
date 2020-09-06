@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="scholarshipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="scholarship_details">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="student_id" Type="Int64" Nullable="false" />
+    <Property Name="amount" Type="Int64" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="reason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="student" Relationship="scholarshipModel.FK_scholarship_details" FromRole="scholarship_details" ToRole="student" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="scholarship_details" Relationship="scholarshipModel.FK_scholarship_details" FromRole="student" ToRole="scholarship_details" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="scholarship_details" EntityType="Self.scholarship_details" />
+    <EntitySet Name="students" EntityType="Self.student" />
+    <AssociationSet Name="FK_scholarship_details" Association="scholarshipModel.FK_scholarship_details">
+      <End Role="student" EntitySet="students" />
+      <End Role="scholarship_details" EntitySet="scholarship_details" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_scholarship_details">
+    <End Type="scholarshipModel.student" Role="student" Multiplicity="1" />
+    <End Type="scholarshipModel.scholarship_details" Role="scholarship_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="scholarship_details">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
