@@ -16,7 +16,7 @@ namespace scholarship_app
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "StudentLogin", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "scholarship_details", action = "scholarshipsite", id = UrlParameter.Optional }
             );
         }
     }
