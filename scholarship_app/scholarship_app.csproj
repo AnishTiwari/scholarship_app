@@ -130,11 +130,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ApproverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\listingsController.cs" />
     <Compile Include="Controllers\scholarship_detailsController.cs" />
     <Compile Include="Controllers\StudentLoginController.cs" />
     <Compile Include="Controllers\studentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\availed.cs">
+      <DependentUpon>model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\listing.cs">
+      <DependentUpon>model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -222,6 +229,14 @@
     <Content Include="Views\scholarship_details\Details.cshtml" />
     <Content Include="Views\scholarship_details\Index.cshtml" />
     <Content Include="Views\Approver\Index.cshtml" />
+    <Content Include="Views\scholarship_details\scholarshipsite.cshtml" />
+    <Content Include="Views\scholarship_details\About.cshtml" />
+    <Content Include="Views\scholarship_details\Main.cshtml" />
+    <Content Include="Views\listings\Create.cshtml" />
+    <Content Include="Views\listings\Delete.cshtml" />
+    <Content Include="Views\listings\Details.cshtml" />
+    <Content Include="Views\listings\Edit.cshtml" />
+    <Content Include="Views\listings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

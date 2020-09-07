@@ -11,28 +11,37 @@ namespace scholarship_app.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class student
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    public class Currency
+    {
+        public string USD { get; set; }
+        public string INR { get; set; }
+        public string DOL { get; set; }
+
+    }
+    public partial class listing
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public student()
+        public listing()
         {
-            this.scholarship_details = new HashSet<scholarship_details>();
             this.availeds = new HashSet<availed>();
-            this.listings = new HashSet<listing>();
         }
-    
+      
         public long Id { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Password { get; set; }
+        public string GivenBy { get; set; }
+        public Nullable<System.DateTime> CreatedTime { get; set; }
+        public Nullable<int> Amount { get; set; }
+        public string Currency { get; set; }
+        [DisplayName("End Date"),
+   DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public Nullable<long> NoAvailable { get; set; }
+        public Nullable<long> student_id { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<scholarship_details> scholarship_details { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<availed> availeds { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<listing> listings { get; set; }
+        public virtual student student { get; set; }
     }
 }

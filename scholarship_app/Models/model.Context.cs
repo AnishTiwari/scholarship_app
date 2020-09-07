@@ -27,5 +27,7 @@ namespace scholarship_app.Models
     
         public virtual DbSet<scholarship_details> scholarship_details { get; set; }
         public virtual DbSet<student> students { get; set; }
+        public virtual DbSet<listing> listings { get; set; }
+        public virtual DbSet<availed> availeds { get; set; }
     }
 }

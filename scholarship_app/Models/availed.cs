@@ -12,15 +12,13 @@ namespace scholarship_app.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class scholarship_details
+    public partial class availed
     {
         public long Id { get; set; }
         public long student_id { get; set; }
-        public Nullable<long> amount { get; set; }
-        public string address { get; set; }
-        public string reason { get; set; }
-        public string status { get; set; }
+        public long listing_id { get; set; }
     
+        public virtual listing listing { get; set; }
         public virtual student student { get; set; }
     }
 }

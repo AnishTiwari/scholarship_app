@@ -14,8 +14,7 @@ namespace scholarship_app.Controllers
         public ActionResult Index(student Student)
         {
 
-            if (ModelState.IsValid)
-            {
+          
                 Entities db = new Entities();
                 var user = (from userlist in db.students
                             where userlist.Name == Student.Name && userlist.Email == Student.Email
@@ -30,13 +29,13 @@ namespace scholarship_app.Controllers
                   
                     Session["UserName"] = user.FirstOrDefault().Name;
                     Session["UserID"] = user.FirstOrDefault().Id;
-                    return RedirectToAction("Index","scholarship_details");
+                    return RedirectToAction("Main","scholarship_details");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Invalid login credentials.");
                 }
-            }
+          
             return View();
         }
     }

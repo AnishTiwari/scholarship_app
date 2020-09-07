@@ -16,6 +16,36 @@ namespace scholarship_app.Controllers
     {
         private Entities db = new Entities();
 
+        public ActionResult Scholarshipsite()
+        {
+
+            return View();
+        }
+
+        public ActionResult About()
+        {
+
+            return View();
+        }
+
+        public ActionResult Main()
+        {
+            try
+            {
+                var name = System.Web.HttpContext.Current.Session["UserName"].ToString();
+                var listings = db.listings.Where(x => x.student.Name == name).Select(x => x);
+                return View(db.listings.ToList().OrderBy(x=>x.EndDate).ToList());
+            }
+            catch
+            {
+                return RedirectToAction("Index", "StudentLogin");
+
+            }
+         
+
+        }
+            
+            
         // GET: scholarship_details
         public async Task<ActionResult> Index()
         {
@@ -40,9 +70,13 @@ namespace scholarship_app.Controllers
         }
 
         // GET: scholarship_details/Create
-        public ActionResult Create()
+      
+        public ActionResult Create(long id)
         {
             ViewBag.student_id = new SelectList(db.students, "Id", "Name");
+
+            Session["ApplyId"] = id;
+
             return View();
         }
 
@@ -71,7 +105,21 @@ namespace scholarship_app.Controllers
                 sc.student_id = id;
                 sc.status = "Pending";
                 db.scholarship_details.Add(sc);
+
+                var apply_id = System.Web.HttpContext.Current.Session["ApplyId"].ToString();
+
+                availed av = new availed();
+                av.listing_id = Convert.ToInt64(apply_id);
+                av.student_id = id;
+                db.availeds.Add(av);
+
+
                 await db.SaveChangesAsync();
+
+
+
+
+
                 return RedirectToAction("Index");
             }
 

@@ -16,9 +16,34 @@
     <EntitySetMapping Name="students">
       <EntityTypeMapping TypeName="scholarshipModel.student">
         <MappingFragment StoreEntitySet="student">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="listings">
+      <EntityTypeMapping TypeName="scholarshipModel.listing">
+        <MappingFragment StoreEntitySet="listings">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="NoAvailable" ColumnName="NoAvailable" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="GivenBy" ColumnName="GivenBy" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="availeds">
+      <EntityTypeMapping TypeName="scholarshipModel.availed">
+        <MappingFragment StoreEntitySet="availed">
+          <ScalarProperty Name="listing_id" ColumnName="listing_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

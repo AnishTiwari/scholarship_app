@@ -1,5 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="scholarshipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="availed">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_id" Type="bigint" Nullable="false" />
+    <Property Name="listing_id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="listings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GivenBy" Type="varchar" MaxLength="200" />
+    <Property Name="CreatedTime" Type="datetime" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="Currency" Type="varchar" MaxLength="5" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="NoAvailable" Type="bigint" />
+    <Property Name="student_id" Type="bigint" />
+  </EntityType>
   <EntityType Name="scholarship_details">
     <Key>
       <PropertyRef Name="Id" />
@@ -18,7 +39,33 @@
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="11" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
   </EntityType>
+  <Association Name="FK__availed__listing__59063A47">
+    <End Role="listings" Type="Self.listings" Multiplicity="1" />
+    <End Role="availed" Type="Self.availed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="listings">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="availed">
+        <PropertyRef Name="listing_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__availed__student__5812160E">
+    <End Role="student" Type="Self.student" Multiplicity="1" />
+    <End Role="availed" Type="Self.availed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="availed">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_scholarship_details">
     <End Role="student" Type="Self.student" Multiplicity="1" />
     <End Role="scholarship_details" Type="Self.scholarship_details" Multiplicity="*" />
@@ -31,12 +78,38 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_slistings">
+    <End Role="student" Type="Self.student" Multiplicity="0..1" />
+    <End Role="listings" Type="Self.listings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="listings">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="scholarshipModelStoreContainer">
+    <EntitySet Name="availed" EntityType="Self.availed" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="listings" EntityType="Self.listings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="scholarship_details" EntityType="Self.scholarship_details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__availed__listing__59063A47" Association="Self.FK__availed__listing__59063A47">
+      <End Role="listings" EntitySet="listings" />
+      <End Role="availed" EntitySet="availed" />
+    </AssociationSet>
+    <AssociationSet Name="FK__availed__student__5812160E" Association="Self.FK__availed__student__5812160E">
+      <End Role="student" EntitySet="student" />
+      <End Role="availed" EntitySet="availed" />
+    </AssociationSet>
     <AssociationSet Name="FK_scholarship_details" Association="Self.FK_scholarship_details">
       <End Role="student" EntitySet="student" />
       <End Role="scholarship_details" EntitySet="scholarship_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_slistings" Association="Self.FK_slistings">
+      <End Role="student" EntitySet="student" />
+      <End Role="listings" EntitySet="listings" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
