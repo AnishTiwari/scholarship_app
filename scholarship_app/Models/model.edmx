@@ -46,6 +46,14 @@
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="11" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="ScholarshipCategory" Type="varchar" MaxLength="20" />
+          <Property Name="StateofDomicile" Type="varchar" MaxLength="50" />
+          <Property Name="BankACNumber" Type="varchar" MaxLength="30" />
+          <Property Name="BankIFSCCode" Type="varchar" MaxLength="30" />
+          <Property Name="BankName" Type="varchar" MaxLength="200" />
+          <Property Name="Gender" Type="varchar" MaxLength="8" />
+          <Property Name="SchemeType" Type="varchar" MaxLength="30" />
+          <Property Name="IdentificationDetail" Type="varchar" MaxLength="200" />
         </EntityType>
         <Association Name="FK__availed__listing__59063A47">
           <End Role="listings" Type="Self.listings" Multiplicity="1" />
@@ -145,6 +153,14 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="availeds" Relationship="scholarshipModel.FK__availed__student__5812160E" FromRole="student" ToRole="availed" />
           <NavigationProperty Name="listings" Relationship="scholarshipModel.FK_slistings" FromRole="student" ToRole="listing" />
+          <Property Name="ScholarshipCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StateofDomicile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankACNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BankIFSCCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SchemeType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdentificationDetail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="scholarship_details" EntityType="Self.scholarship_details" />
@@ -262,6 +278,14 @@
           <EntitySetMapping Name="students">
             <EntityTypeMapping TypeName="scholarshipModel.student">
               <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="IdentificationDetail" ColumnName="IdentificationDetail" />
+                <ScalarProperty Name="SchemeType" ColumnName="SchemeType" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankIFSCCode" ColumnName="BankIFSCCode" />
+                <ScalarProperty Name="BankACNumber" ColumnName="BankACNumber" />
+                <ScalarProperty Name="StateofDomicile" ColumnName="StateofDomicile" />
+                <ScalarProperty Name="ScholarshipCategory" ColumnName="ScholarshipCategory" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

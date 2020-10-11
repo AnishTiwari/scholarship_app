@@ -11,16 +11,7 @@ namespace scholarship_app.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
-    public class Currency
-    {
-        public string USD { get; set; }
-        public string INR { get; set; }
-        public string DOL { get; set; }
-
-    }
+    
     public partial class listing
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,14 +19,12 @@ namespace scholarship_app.Models
         {
             this.availeds = new HashSet<availed>();
         }
-      
+    
         public long Id { get; set; }
         public string GivenBy { get; set; }
         public Nullable<System.DateTime> CreatedTime { get; set; }
         public Nullable<int> Amount { get; set; }
         public string Currency { get; set; }
-        [DisplayName("End Date"),
-   DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<long> NoAvailable { get; set; }
         public Nullable<long> student_id { get; set; }

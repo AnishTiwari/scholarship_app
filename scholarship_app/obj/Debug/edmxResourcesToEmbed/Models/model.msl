@@ -16,6 +16,14 @@
     <EntitySetMapping Name="students">
       <EntityTypeMapping TypeName="scholarshipModel.student">
         <MappingFragment StoreEntitySet="student">
+          <ScalarProperty Name="IdentificationDetail" ColumnName="IdentificationDetail" />
+          <ScalarProperty Name="SchemeType" ColumnName="SchemeType" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="BankIFSCCode" ColumnName="BankIFSCCode" />
+          <ScalarProperty Name="BankACNumber" ColumnName="BankACNumber" />
+          <ScalarProperty Name="StateofDomicile" ColumnName="StateofDomicile" />
+          <ScalarProperty Name="ScholarshipCategory" ColumnName="ScholarshipCategory" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Id" ColumnName="Id" />

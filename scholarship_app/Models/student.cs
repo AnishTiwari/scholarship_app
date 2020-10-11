@@ -11,7 +11,8 @@ namespace scholarship_app.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,8 +26,21 @@ namespace scholarship_app.Models
         public long Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        [Required(ErrorMessage = "You must provide a phone number")]
+        [Display(Name = "Home Phone")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
+
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
+        public string ScholarshipCategory { get; set; }
+        public string StateofDomicile { get; set; }
+        public string BankACNumber { get; set; }
+        public string BankIFSCCode { get; set; }
+        public string BankName { get; set; }
+        public string Gender { get; set; }
+        public string SchemeType { get; set; }
+        public string IdentificationDetail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<scholarship_details> scholarship_details { get; set; }

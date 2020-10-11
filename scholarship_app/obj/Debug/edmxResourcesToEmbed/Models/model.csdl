@@ -24,6 +24,14 @@
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="availeds" Relationship="scholarshipModel.FK__availed__student__5812160E" FromRole="student" ToRole="availed" />
     <NavigationProperty Name="listings" Relationship="scholarshipModel.FK_slistings" FromRole="student" ToRole="listing" />
+    <Property Name="ScholarshipCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="StateofDomicile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BankACNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="BankIFSCCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="BankName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="SchemeType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IdentificationDetail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="scholarship_details" EntityType="Self.scholarship_details" />

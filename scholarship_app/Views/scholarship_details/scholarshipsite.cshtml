@@ -17,7 +17,24 @@
 
 </head>
 <body>
+    <style>
+        .btn-primary{
+            color:black !important;
+            background-color:#f8f8f8 !important;
+            border-color:#f8f8f8 !important;
+        }
+          .btn-primary:focus{
+                color:black !important;
+            background-color:#f8f8f8 !important;
+             border-color:#f8f8f8 !important;
+        }
 
+            .btn-primary:hover{
+                  color:black !important;
+            background-color:#f8f8f8 !important;
+             border-color:#f8f8f8 !important;
+        }
+    </style>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -26,13 +43,37 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
                 <li>@Html.ActionLink("About", "About", "scholarship_details")</li>
-                <li><a href="#">Contact</a></li>
+                <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Contact
+</button></li>
                 <li>@Html.ActionLink("Register", "Create", "students")</li>
                 <li>@Html.ActionLink("Login", "Index", "StudentLogin")</li>
             </ul>
         </div>
     </nav>
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <address>
+                        Email: <a href="mailto:amiteshpatil@gmail.com">Amitesh Patil</a>.<br><br>
+                       Contact: 904578912<br>
+                    </address>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
 
 

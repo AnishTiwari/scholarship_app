@@ -47,7 +47,7 @@ namespace scholarship_app.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Email")] student student)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Email,Password,ScholarshipCategory,StateofDomicile,BankACNumber,BankIFSCCode,BankName,Gender,SchemeType,IdentificationDetail")] student student)
         {
             if (ModelState.IsValid)
             {

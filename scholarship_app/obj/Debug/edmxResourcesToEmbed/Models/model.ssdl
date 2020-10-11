@@ -41,6 +41,14 @@
     <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="PhoneNumber" Type="varchar" MaxLength="11" />
     <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="ScholarshipCategory" Type="varchar" MaxLength="20" />
+    <Property Name="StateofDomicile" Type="varchar" MaxLength="50" />
+    <Property Name="BankACNumber" Type="varchar" MaxLength="30" />
+    <Property Name="BankIFSCCode" Type="varchar" MaxLength="30" />
+    <Property Name="BankName" Type="varchar" MaxLength="200" />
+    <Property Name="Gender" Type="varchar" MaxLength="8" />
+    <Property Name="SchemeType" Type="varchar" MaxLength="30" />
+    <Property Name="IdentificationDetail" Type="varchar" MaxLength="200" />
   </EntityType>
   <Association Name="FK__availed__listing__59063A47">
     <End Role="listings" Type="Self.listings" Multiplicity="1" />
