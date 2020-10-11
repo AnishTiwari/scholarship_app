@@ -83,3 +83,15 @@ CREATE TABLE [dbo].availed (
     -- PRIMARY KEY CLUSTERED (AuthorId, BookId)
 );
 
+-- added on oct/11/2020
+
+alter table student 
+add ScholarshipCategory varchar(20)
+, StateofDomicile varchar(50)
+ ,BankACNumber varchar(30),
+ BankIFSCCode varchar(30),
+ BankName varchar(200),
+ Gender varchar(8),
+ SchemeType varchar(30),
+ IdentificationDetail varchar(200)
+;
