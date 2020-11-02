@@ -12,6 +12,7 @@ namespace scholarship_app.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public partial class student
     {
@@ -25,8 +26,12 @@ namespace scholarship_app.Models
     
         public long Id { get; set; }
         public string Name { get; set; }
+
+
+        [Required(ErrorMessage = "You must provide a valid Email Id")]
+        [RegularExpression(@"^\S+@\S+\.\S+$", ErrorMessage = "Not a valid Email Id")]
+       
         public string Email { get; set; }
-        [Required(ErrorMessage = "You must provide a phone number")]
         [Display(Name = "Home Phone")]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
@@ -34,10 +39,24 @@ namespace scholarship_app.Models
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
         public string ScholarshipCategory { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
         public string StateofDomicile { get; set; }
+
+        [Required(ErrorMessage = "You must provide a Bank AC Number")]
+       
+        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Not a valid Bank AC Number")]
+
         public string BankACNumber { get; set; }
+
         public string BankIFSCCode { get; set; }
+
+
+        [Required(ErrorMessage = "You must provide a valid Bank Name")]
+        [RegularExpression(@"^[a-zA-z]$", ErrorMessage = "Not a valid Bank Name")]
         public string BankName { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
         public string Gender { get; set; }
         public string SchemeType { get; set; }
         public string IdentificationDetail { get; set; }
